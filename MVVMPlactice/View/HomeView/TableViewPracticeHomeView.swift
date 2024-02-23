@@ -11,8 +11,10 @@ import SnapKit
 class TableViewPracticeHomeView: BaseView {
     
     let tableView = UITableView(frame: .zero)
+    
     var leftNaviButtonAction: (() -> Void)?
     var rightNaviButtonAction: (() -> Void)?
+    var resetNaviButtonAction: (() -> Void)?
     
     /// 좌측 추가하기 버튼 AddTarget Need
     lazy var leftNaviButton: UIBarButtonItem = {
@@ -29,6 +31,15 @@ class TableViewPracticeHomeView: BaseView {
         view.setTitle("지우기", for: .normal)
         view.setTitleColor(.red, for: .normal)
         view.addTarget(self, action: #selector(rightButtonClicked), for: .touchUpInside)
+        let button = UIBarButtonItem(customView: view)
+        return button
+    }()
+    
+    lazy var resetNaviButton: UIBarButtonItem = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("초가화", for: .normal)
+        view.setTitleColor(.red, for: .normal)
+        view.addTarget(self, action: #selector(resetButtonAction), for: .touchUpInside)
         let button = UIBarButtonItem(customView: view)
         return button
     }()
@@ -57,6 +68,10 @@ extension TableViewPracticeHomeView {
     @objc
     func rightButtonClicked(){
         rightNaviButtonAction?()
+    }
+    @objc
+    func resetButtonAction() {
+        resetNaviButtonAction?()
     }
     
 }

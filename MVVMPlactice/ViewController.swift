@@ -35,15 +35,18 @@ class ViewController: BaseViewController<TableViewPracticeHomeView> {
 // MARK: UINavigation Setting 관련
 extension ViewController {
     func navigationSetting(){
-        navigationItem.leftBarButtonItem = homeView.leftNaviButton
         navigationItem.rightBarButtonItem = homeView.rightNaviButton
+        navigationItem.leftBarButtonItems = [homeView.leftNaviButton, homeView.resetNaviButton]
     }
     func navigationActionSetting(){
-        homeView.leftNaviButtonAction = {
-            self.viewModel.userObserver.value?.append(User(name: "연습성공", age: 99))
+        homeView.leftNaviButtonAction = { [weak self] in
+            self?.viewModel.addUserRandom()
         }
-        homeView.rightNaviButtonAction = {
-            self.viewModel.userObserver.value?.removeLast()
+        homeView.rightNaviButtonAction = { [weak self] in
+            self?.viewModel.removeLast()
+        }
+        homeView.resetNaviButtonAction = { [weak self] in
+            self?.viewModel.resetButtonAction()
         }
     }
 }
