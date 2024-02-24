@@ -60,9 +60,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: UITableViewCell.reuseableIdentifier)
         
-        cell.textLabel?.text = viewModel.userObserver.value?[indexPath.row].name
-        cell.detailTextLabel?.text = viewModel.userObserver.value?[indexPath.row].age.description
-        
+        let data = viewModel.userInfo(indexPath)
+        cell.textLabel?.text = data?.name
+        cell.detailTextLabel?.text = data?.age
         return cell
     }
 

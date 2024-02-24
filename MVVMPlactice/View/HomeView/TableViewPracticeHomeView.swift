@@ -37,7 +37,7 @@ class TableViewPracticeHomeView: BaseView {
     
     lazy var resetNaviButton: UIBarButtonItem = {
         let view = UIButton(frame: .zero)
-        view.setTitle("초가화", for: .normal)
+        view.setTitle("초기화", for: .normal)
         view.setTitleColor(.red, for: .normal)
         view.addTarget(self, action: #selector(resetButtonAction), for: .touchUpInside)
         let button = UIBarButtonItem(customView: view)
