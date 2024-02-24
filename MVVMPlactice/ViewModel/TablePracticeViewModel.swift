@@ -29,26 +29,21 @@ class TablePracticeViewModel{
     
     func removeLast(){
         print(#function)
-        guard let data = userObserver.value else {
+        if userObserver.value.isEmpty {
             return
         }
-        if data.isEmpty {
-            return
-        }
-        userObserver.value?.removeLast()
+        userObserver.value.removeLast()
     }
     
     func addUserRandom(){
         print(#function)
-        userObserver.value?.append(User(name: "안녕?", age: Int.random(in: 0...90)))
+        print( userObserver.value)
+        userObserver.value.append(User(name: "안녕?", age: Int.random(in: 0...90)))
     }
     
     // UserInfo Post
     func userInfo(_ index: IndexPath) -> (name: String, age: String)? {
-        let data = userObserver.value?[index.row]
-        guard let data = data else {
-            return nil
-        }
+        let data = userObserver.value[index.row]
         let age = data.age
         let name = data.name
         

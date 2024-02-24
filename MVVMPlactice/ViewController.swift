@@ -54,7 +54,7 @@ extension ViewController {
 // MARK: 테이블뷰 관련
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.userObserver.value?.count ?? 0
+        return viewModel.userObserver.value.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
