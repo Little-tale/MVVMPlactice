@@ -11,7 +11,9 @@ import UIKit
 class TablePracticeViewModel{
     //  Array<User> 의 상태값 추적
     var userObserver: Observer<[User]> = Observer([])
+    
 
+    // Init에서 처음부터 감시할거
     init(){
         userObserver.bind { user in
             self.addUserRandom()

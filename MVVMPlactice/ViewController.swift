@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// import Foundation
 // ViewController 가 해야할일을 줄이기위함이다.
 // 비즈니스 로직을 ViewModel이
 // 변경을 감지해야 하는 것들은 옵저버를 달아서 관리하여
@@ -21,6 +21,7 @@ class ViewController: BaseViewController<TableViewPracticeHomeView> {
         super.viewDidLoad()
         navigationSetting() // 네비게이션 기본세팅
         navigationActionSetting() // 역값전달로 액션세팅
+        
         subscribe()//변화 등록
         
     }
@@ -30,7 +31,6 @@ class ViewController: BaseViewController<TableViewPracticeHomeView> {
     override func syncDelegate() {
         homeView.tableView.dataSource = self
     }
-
 }
 // MARK: UINavigation Setting 관련
 extension ViewController {
