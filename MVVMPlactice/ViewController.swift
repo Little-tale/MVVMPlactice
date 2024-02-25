@@ -70,7 +70,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return viewModel.settingSwipeAction(indexPath)
+    
+        let action = ActionManager.swipeDelete.getAction {
+            [weak self] in
+            self?.viewModel.removeAt(indexPath: indexPath)
+        }
+        let config = UISwipeActionsConfiguration(actions: [action])
+        
+        return config
         
     }
 

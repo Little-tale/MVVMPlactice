@@ -5,7 +5,7 @@
 //  Created by Jae hyung Kim on 2/23/24.
 //
 
-import UIKit
+import Foundation
 
 
 class TablePracticeViewModel{
@@ -66,18 +66,9 @@ class TablePracticeViewModel{
             self.kakaoDataOutPut.value = data
         }
     }
-    func settingSwipeAction(_ indexPath:IndexPath) -> UISwipeActionsConfiguration{
-        let action = ActionManager.swipeDelete.getAction {
-            [weak self] in
-            self?.removeAt(indexPath: indexPath)
-        }
-        
-        let config = UISwipeActionsConfiguration(actions: [action])
-        
-        return config
-    }
+   
     
-    private func removeAt(indexPath: IndexPath) {
+    func removeAt(indexPath: IndexPath) {
         guard var data = kakaoDataOutPut.value else {
             return
         }
@@ -85,6 +76,20 @@ class TablePracticeViewModel{
         kakaoDataOutPut.value = data
     }
 }
+
+/*
+ func settingSwipeAction(_ indexPath:IndexPath) -> UISwipeActionsConfiguration{
+     let action = ActionManager.swipeDelete.getAction {
+         [weak self] in
+         self?.removeAt(indexPath: indexPath)
+     }
+     
+     let config = UISwipeActionsConfiguration(actions: [action])
+     
+     return config
+ }
+ */
+
 
 /*
  urlManager.requestURL(type: KakaoModel.self, api: KAKAOApi.search(searchText: searchText, x: x, y: y)) {[weak self] data in
