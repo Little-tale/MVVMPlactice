@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: 카카오 로컬 검색
-struct NaverGeo: Decodable {
+struct KakaoModel: Decodable {
     let documents: [Document]
     let meta: Meta
 }

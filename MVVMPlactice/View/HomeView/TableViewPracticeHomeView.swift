@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class TableViewPracticeHomeView: BaseView {
-    
+    let searchBar = UISearchBar(frame: .zero)
     let tableView = UITableView(frame: .zero)
     
     var leftNaviButtonAction: (() -> Void)?
@@ -47,11 +47,17 @@ class TableViewPracticeHomeView: BaseView {
     
 
     override func configureHierarchy() {
+        self.addSubview(searchBar)
         self.addSubview(tableView)
     }
     override func configureLayout() {
+        searchBar.snp.makeConstraints { make in
+            make.horizontalEdges.top.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(40)
+        }
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(searchBar.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
     override func register() {

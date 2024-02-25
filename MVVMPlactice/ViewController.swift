@@ -16,12 +16,12 @@ import UIKit
 class ViewController: BaseViewController<TableViewPracticeHomeView> {
     
     let viewModel = TablePracticeViewModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationSetting() // 네비게이션 기본세팅
         navigationActionSetting() // 역값전달로 액션세팅
-        
         subscribe()//변화 등록
         
     }
@@ -30,6 +30,7 @@ class ViewController: BaseViewController<TableViewPracticeHomeView> {
     }
     override func syncDelegate() {
         homeView.tableView.dataSource = self
+        homeView.searchBar.delegate = self
     }
 }
 // MARK: UINavigation Setting 관련
@@ -54,25 +55,40 @@ extension ViewController {
 // MARK: 테이블뷰 관련
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.userObserver.value.count 
+        
+        return viewModel.kakaoDataOutPut.value?.documents.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: UITableViewCell.reuseableIdentifier)
         
-        let data = viewModel.userInfo(indexPath)
-        cell.textLabel?.text = data?.name
-        cell.detailTextLabel?.text = data?.age
+        let data = viewModel.kakaoDataOutPut.value?.documents[indexPath.row]
+        cell.textLabel?.text = data?.placeName
+        cell.detailTextLabel?.text = data?.roadAddressName
         return cell
     }
 
 }
 
+// MARK: SearchBar Delegate
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
+        viewModel.urlRequest(searchText: searchBar.text, x: "127.03843385123739", y: "37.665838488285594", pageNum: 1)
+        
+    }
+}
+
 // MARK: 모델뷰 관련
 extension ViewController {
     func subscribe(){
-        viewModel.userObserver.bind { user in
-            self.homeView.tableView.reloadData()
+        viewModel.userObserver.bind {[weak self] _ in
+            self?.homeView.tableView.reloadData()
+        }
+        viewModel.kakaoDataOutPut.bind {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.homeView.tableView.reloadData()
+            }
         }
     }
 }

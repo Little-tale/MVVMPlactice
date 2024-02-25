@@ -12,12 +12,24 @@ class TablePracticeViewModel{
     //  Array<User> 의 상태값 추적
     var userObserver: Observer<[User]> = Observer([])
     
-
+    var kakaoDataOutPut: Observer<KakaoModel?> = Observer(nil)
+    
+    // 고정적인 부분
+    var urlManager = URLSessionManager.shared
+    
+    
     // Init에서 처음부터 감시할거
     init(){
         userObserver.bind { user in
             self.addUserRandom()
         }
+//        kakaoDataInput.bind { [weak self] data in
+//            guard let data = data else {
+//                return
+//            }
+//            self?.urlRequest(searchText: data.text, x: data.x, y: data.y)
+//        }
+        
     }
     
     func resetButtonAction() {
@@ -52,4 +64,21 @@ class TablePracticeViewModel{
         return (name, String(age))
     }
 
+    func urlRequest(searchText: String?, x: String, y: String, pageNum: Int? = nil){
+        guard let searchText = searchText else {
+            return
+        }
+        print(searchText)
+        urlManager.requestURL(type: KakaoModel.self, api: KAKAOApi.search(searchText: searchText, x: x, y: y), pageNum: pageNum) { data in
+            self.kakaoDataOutPut.value = data
+        }
+    }
+    
 }
+
+/*
+ urlManager.requestURL(type: KakaoModel.self, api: KAKAOApi.search(searchText: searchText, x: x, y: y)) {[weak self] data in
+     return data
+ }
+ //    var kakaoDataInput: Observer<(text: String?, x:String, y: String)?> = Observer(nil)
+ */
