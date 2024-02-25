@@ -13,6 +13,7 @@
 		7B33A0982B8B626B00530F51 /* URLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33A0972B8B626B00530F51 /* URLType.swift */; };
 		7B33A09A2B8B79A100530F51 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B33A0992B8B79A100530F51 /* .gitignore */; };
 		7B33A09C2B8B7A0F00530F51 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33A09B2B8B7A0F00530F51 /* APIKey.swift */; };
+		7B33A09E2B8BA41600530F51 /* ActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33A09D2B8BA41600530F51 /* ActionManager.swift */; };
 		7BF2324B2B88D773009DE0D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2324A2B88D773009DE0D8 /* AppDelegate.swift */; };
 		7BF2324D2B88D773009DE0D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2324C2B88D773009DE0D8 /* SceneDelegate.swift */; };
 		7BF2324F2B88D773009DE0D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2324E2B88D773009DE0D8 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 		7B33A0972B8B626B00530F51 /* URLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLType.swift; sourceTree = "<group>"; };
 		7B33A0992B8B79A100530F51 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7B33A09B2B8B7A0F00530F51 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		7B33A09D2B8BA41600530F51 /* ActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionManager.swift; sourceTree = "<group>"; };
 		7BF232472B88D773009DE0D8 /* MVVMPlactice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMPlactice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF2324A2B88D773009DE0D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF2324C2B88D773009DE0D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				7B33A0902B8B5EDB00530F51 /* URLSessionManager.swift */,
+				7B33A09D2B8BA41600530F51 /* ActionManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				7B33A09C2B8B7A0F00530F51 /* APIKey.swift in Sources */,
 				7BF232692B88D936009DE0D8 /* BaseViewController.swift in Sources */,
 				7BF2324F2B88D773009DE0D8 /* ViewController.swift in Sources */,
+				7B33A09E2B8BA41600530F51 /* ActionManager.swift in Sources */,
 				7B33A0912B8B5EDB00530F51 /* URLSessionManager.swift in Sources */,
 				7BF2324B2B88D773009DE0D8 /* AppDelegate.swift in Sources */,
 				7B33A0932B8B5F4000530F51 /* KakaoModel.swift in Sources */,

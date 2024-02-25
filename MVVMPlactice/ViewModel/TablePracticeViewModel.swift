@@ -23,13 +23,6 @@ class TablePracticeViewModel{
         userObserver.bind { user in
             self.addUserRandom()
         }
-//        kakaoDataInput.bind { [weak self] data in
-//            guard let data = data else {
-//                return
-//            }
-//            self?.urlRequest(searchText: data.text, x: data.x, y: data.y)
-//        }
-        
     }
     
     func resetButtonAction() {
@@ -73,7 +66,24 @@ class TablePracticeViewModel{
             self.kakaoDataOutPut.value = data
         }
     }
+    func settingSwipeAction(_ indexPath:IndexPath) -> UISwipeActionsConfiguration{
+        let action = ActionManager.swipeDelete.getAction {
+            [weak self] in
+            self?.removeAt(indexPath: indexPath)
+        }
+        
+        let config = UISwipeActionsConfiguration(actions: [action])
+        
+        return config
+    }
     
+    private func removeAt(indexPath: IndexPath) {
+        guard var data = kakaoDataOutPut.value else {
+            return
+        }
+        data.documents.remove(at: indexPath.row)
+        kakaoDataOutPut.value = data
+    }
 }
 
 /*
@@ -81,4 +91,12 @@ class TablePracticeViewModel{
      return data
  }
  //    var kakaoDataInput: Observer<(text: String?, x:String, y: String)?> = Observer(nil)
+ 
+ 
+ //        kakaoDataInput.bind { [weak self] data in
+ //            guard let data = data else {
+ //                return
+ //            }
+ //            self?.urlRequest(searchText: data.text, x: data.x, y: data.y)
+ //        }
  */

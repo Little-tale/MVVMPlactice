@@ -7,6 +7,7 @@
 
 import UIKit
 // import Foundation
+// import Foundation
 // ViewController 가 해야할일을 줄이기위함이다.
 // 비즈니스 로직을 ViewModel이
 // 변경을 감지해야 하는 것들은 옵저버를 달아서 관리하여
@@ -67,6 +68,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = data?.roadAddressName
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return viewModel.settingSwipeAction(indexPath)
+        
+    }
 
 }
 
@@ -85,6 +91,7 @@ extension ViewController {
         viewModel.userObserver.bind {[weak self] _ in
             self?.homeView.tableView.reloadData()
         }
+        
         viewModel.kakaoDataOutPut.bind {[weak self] _ in
             DispatchQueue.main.async {
                 self?.homeView.tableView.reloadData()
@@ -92,5 +99,7 @@ extension ViewController {
         }
     }
 }
-
+// MARK: DisPatchQueue 를 한번더 해야함 왜일까?
+// -> URL 세션은 에러를 메인쓰레드
+// -> 여기선 UI 를 메인쓰레드가 할 보장이 없기에 보라돌이가 나온다.
 
